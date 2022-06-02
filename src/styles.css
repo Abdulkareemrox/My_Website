@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
+
+html,
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+p {
+  margin: 0;
+}
+
+.player {
+  border: 1px dotted black;
+  display: flex;
+  align-items: center;
+}
+
+.player-source {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.source-image img {
+  display: block;
+}
+
+.source-name {
+  margin: 0 0.25em;
+}
+
+.source-name h1 {
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0;
+}
+
+.source-name h2 {
+  font-size: 0.75em;
+  font-weight: normal;
+  margin: 0;
+}
+
+.player-controls {
+  flex-grow: 1;
+  text-align: center;
+  padding: 0 2em;
+}
+
+.controls-time {
+  display: flex;
+}
+
+.controls-time .time-input {
+  position: relative;
+  flex-grow: 1;
+  padding: 0 0.5em;
+}
+
+.controls-time .time-input input {
+  width: 100%;
+}
+
+.player-volume {
+  display: flex;
+}
+
+.player-volume input {
+  /* flex-grow: 1; */
+  /* flex-shrink: 1; */
+  width: 60px;
+}
+
+html {
+  --track-unplayed: lightgrey;
+  --track-played: #43e5f7;
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 30px 0px;
+  flex-direction: row;
+}
+
+.textBox {
+  padding: 20px;
+  border: 2px solid #4168f2;
+  font-size: 18px;
+  width: 500px;
+  display: flex;
+  align-items: center;
+  font-style: italic;
+}
+
+/*Chrome*/
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="range"] {
+    overflow: hidden;
+    width: 80px;
+    -webkit-appearance: none;
+    background-color: lightgrey;
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: var(--track-played);
+    margin-top: -1px;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    width: 0px;
+    -webkit-appearance: none;
+    height: 100%;
+    /* cursor: ew-resize; */
+    background: #434343;
+    box-shadow: -100vw 0 0 100vw var(--track-played);
+  }
+
+  /** FF*/
+  input[type="range"]::-moz-range-progress {
+    background-color: var(--track-played);
+  }
+
+  input[type="range"]::-moz-range-track {
+    background-color: var(--track-unplayed);
+  }
+
+  /* IE*/
+  input[type="range"]::-ms-fill-lower {
+    background-color: var(--track-played);
+  }
+
+  input[type="range"]::-ms-fill-upper {
+    background-color: var(--track-unplayed);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .textBox {
+    width: 300px;
+    font-size: 12px;
+    margin-bottom: 30px;
+
+  }
+
+}
+
+
+
+.drawer-button {
+  color: blue;
+  cursor: pointer;
+}
+
+.drawer {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: #0c1f3f;
+  overflow-y: scroll;
+  color: white;
+
+  /* Initial transforms */
+  opacity: 0;
+  transform: translateY(100%);
+  transition: 0.5s ease;
+}
+
+.drawer-toggler:checked+.drawer {
+  opacity: 1;
+  transform: translateY(0);
+}
